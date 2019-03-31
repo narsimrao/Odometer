@@ -1,28 +1,35 @@
 <html>
 <head>
-    <script src="http://code.jquery.com/jquery-2.2.4.min.js"
-            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-            crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+  crossorigin="anonymous">
     <script type="text/javascript">
-        
+
         function odo() {
             var txt_value = document.getElementById("myText").value;
-            document.getElementById("value").innerHTML = txt_value;
-            console.log(txt_value);
-            txt_value = txt_value / 3.6;
-            console.log(txt_value);
-            var x = document.getElementById("poly").setAttributeNS(null, "transform", "rotate(" + txt_value + " 130 130 )");
-            
+            txt_value = parseInt(txt_value);
+            if(txt_value<999 && txt_value>0 )
+            {
+              document.getElementById("value").innerHTML = txt_value;
+              console.log(txt_value);
+              txt_value = txt_value / 3.6;
+              console.log(txt_value);
+              var x = document.getElementById("poly").setAttributeNS(null, "transform", "rotate(" + txt_value + " 130 130 )");
+            }
+            else {
+              alert("enter a value between 0 to 999 \n Thank You! ");
+            }
         }
     </script>
 </head>
 <body>
+  <div class="container" style="margin-left:34%;margin-top:20%;">
     <p>
         **enter a value between 0 to 900 and the press click**
     </p>
     <input type="text" id="myText" />
     <input type="button" onclick="odo()" value="click" />
-    <svg width="100%" height="100%">
+    <svg width="100%" height="100%"">
         <circle cx="130" cy="130" r="90" stroke="black" stroke-width="1" fill="none" style="
     stroke-width: 23px;
 "></circle>
@@ -65,7 +72,7 @@
         <text x="160" y="175" fill="black">900</text>
         <text x="119" y="197" fill="black" id="value"></text>
     </svg>
-
+</div>
 
 </body>
 </html>
