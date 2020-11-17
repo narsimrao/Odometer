@@ -2,15 +2,23 @@
 <head>
     <script type="text/javascript">
         function odo() {
-            var txt_Value = parseInt(document.getElementById("myText").value);
-            var min_Value = parseInt(document.getElementById("min").textContent);
-            var max_Value = parseInt(document.getElementById("max").textContent);
-            var difference = max_Value - min_Value;
-            var divider = difference / 2;
-            divider = divider / 124.3;
-            txt_Value = txt_Value - min_Value;
-            txt_Value = txt_Value / divider;
-            var x = document.getElementById("poly").setAttributeNS(null, "transform", "rotate(" + txt_Value + " 130 130 )");
+            var txt_Value = parseFloat(document.getElementById("myText").value);
+            var min_Value = parseFloat(document.getElementById("min").textContent);
+            var max_Value = parseFloat(document.getElementById("max").textContent);
+            if(txt_Value >= min_Value && txt_Value <= max_Value)
+            {
+                var difference = max_Value - min_Value;
+                var divider = difference / 2;
+                divider = divider / 124.3;
+                txt_Value = txt_Value - min_Value;
+                txt_Value = txt_Value / divider;
+                var x = document.getElementById("poly").setAttributeNS(null, "transform", "rotate(" + txt_Value + " 130 130 )");
+            }
+            else
+            {
+                alert("Please specify a value within range");
+            }
+            
         }
     </script>
 </head>
@@ -59,8 +67,8 @@
     stroke-width: 19px;
 "></circle>
         <text x="104" y="99" fill="black">odometer</text>
-        <text x="78" y="170" fill="black" id="min">0</text>
-        <text x="160" y="175" fill="black" id="max">10</text>
+        <text x="78" y="170" fill="black" id="min">5</text>
+        <text x="160" y="175" fill="black" id="max">1066</text>
         <text x="119" y="197" fill="black" id="value"></text>
     </svg>
 </div>
